@@ -21,7 +21,7 @@ public class MainApp extends JFrame{
         
         add(nButton, BorderLayout.NORTH);
 
-        add(eButton, BorderLayout.EAST);
+        add(new List(), BorderLayout.EAST);
         add(new Calendar(), BorderLayout.WEST);
         add(cButton, BorderLayout.CENTER);         
         
