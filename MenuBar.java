@@ -7,16 +7,25 @@ import java.awt.event.*;
 public class MenuBar extends JPanel implements ActionListener{
      JMenuBar menubar = new JMenuBar();
      JMenuItem neew,load,save,share,delete,style,options,instruction,license;
-    
+     ImageIcon newFile = new ImageIcon("new.gif");
+     ImageIcon openFile = new ImageIcon("open.gif");
+     ImageIcon saveFile = new ImageIcon("save.gif");
+     ImageIcon shareFile = new ImageIcon("share.gif");
+     ImageIcon delFile = new ImageIcon("del.gif");
+     
     public MenuBar(){
        /////////////////////////////////////////////
        JMenu file = new JMenu("File");
-       
-       neew = new JMenuItem("New");
-       load = new JMenuItem("Load");
-       save = new JMenuItem("Save");
-       share = new JMenuItem("Share");
-       delete = new JMenuItem("Delete");
+       neew = new JMenuItem("New", newFile);
+       neew.setAccelerator(KeyStroke.getKeyStroke('N', Toolkit.getDefaultToolkit ().getMenuShortcutKeyMask()));
+
+       load = new JMenuItem("Load",openFile);
+       load.setAccelerator(KeyStroke.getKeyStroke('O', Toolkit.getDefaultToolkit ().getMenuShortcutKeyMask()));
+
+       save = new JMenuItem("Save",saveFile);
+       save.setAccelerator(KeyStroke.getKeyStroke('S', Toolkit.getDefaultToolkit ().getMenuShortcutKeyMask()));   
+       share = new JMenuItem("Share",shareFile);
+       delete = new JMenuItem("Delete",delFile);
        
        neew.addActionListener(this);
        
@@ -34,6 +43,7 @@ public class MenuBar extends JPanel implements ActionListener{
        options = new JMenuItem("Options");
        
        tools.add(style);
+       tools.addSeparator();
        tools.add(options);
        
        /////////////////////////////////////////////
@@ -43,6 +53,7 @@ public class MenuBar extends JPanel implements ActionListener{
        license = new JMenuItem("License");
        
        help.add(instruction);
+       help.addSeparator();
        help.add(license);
        
        /////////////////////////////////////////////
