@@ -4,19 +4,21 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class MenuBar extends JPanel {
+public class MenuBar extends JPanel implements ActionListener{
      JMenuBar menubar = new JMenuBar();
-    
+     JMenuItem neew,load,save,share,delete,style,options,instruction,license;
     
     public MenuBar(){
        /////////////////////////////////////////////
        JMenu file = new JMenu("File");
        
-       JMenuItem neew = new JMenuItem("New");
-       JMenuItem load = new JMenuItem("Load");
-       JMenuItem save = new JMenuItem("Save");
-       JMenuItem share = new JMenuItem("Share");
-       JMenuItem delete = new JMenuItem("Delete");
+       neew = new JMenuItem("New");
+       load = new JMenuItem("Load");
+       save = new JMenuItem("Save");
+       share = new JMenuItem("Share");
+       delete = new JMenuItem("Delete");
+       
+       neew.addActionListener(this);
        
        file.add(neew);
        file.add(load);
@@ -28,8 +30,8 @@ public class MenuBar extends JPanel {
        /////////////////////////////////////////////
        JMenu tools = new JMenu("Tools");
        
-       JMenuItem style = new JMenuItem("Style");
-       JMenuItem options = new JMenuItem("Options");
+       style = new JMenuItem("Style");
+       options = new JMenuItem("Options");
        
        tools.add(style);
        tools.add(options);
@@ -37,8 +39,8 @@ public class MenuBar extends JPanel {
        /////////////////////////////////////////////
        JMenu help = new JMenu("Help");
        
-       JMenuItem instruction = new JMenuItem("Instruction");
-       JMenuItem license = new JMenuItem("License");
+       instruction = new JMenuItem("Instruction");
+       license = new JMenuItem("License");
        
        help.add(instruction);
        help.add(license);
@@ -55,5 +57,18 @@ public class MenuBar extends JPanel {
        menubar.add(help);
        menubar.add(sync);
        menubar.add(authors);
+    }
+    
+    
+    
+    public void actionPerformed(ActionEvent event){
+        Object source = event.getSource();
+        
+        if(source == neew){
+            NewConsole nc = new NewConsole();
+
+        }
+            
+        
     }
 }

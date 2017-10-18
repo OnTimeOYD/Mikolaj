@@ -4,28 +4,25 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class MainApp extends JFrame{
+public class MainApp extends JFrame {
     
     public MainApp() {
         super("Nazwa");
         setLookAndFeel();
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout(15,3));
-        JButton nButton = new JButton("Północ");
-
-        JButton eButton = new JButton("Wschód");
 
         JButton cButton = new JButton("Środek");
         cButton.setEnabled(false);
  
         
-        add(nButton, BorderLayout.NORTH);
-
+        add(cButton, BorderLayout.CENTER);
         add(new List(), BorderLayout.EAST);
         add(new Calendar(), BorderLayout.WEST);
-        add(cButton, BorderLayout.CENTER);         
         
-       
+        
+        MenuBar menu = new MenuBar();       
+        setJMenuBar(menu.menubar);
         pack();
         setVisible(true);
     }
