@@ -20,6 +20,14 @@ public class MainApp extends JFrame {
         add(new List(), BorderLayout.EAST);
         add(new Calendar(), BorderLayout.WEST);
         
+        ////////////////////////////////////////////////////////////////////////
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        Dimension screenSize = tk.getScreenSize();
+        float screenHeight = screenSize.height;
+        float screenWidth = screenSize.width;
+        setLocation((int)(screenWidth / 2.9), (int)(screenHeight / 3.8));
+        ////////////////////////////////////////////////////////////////////////
+        
         
         MenuBar menu = new MenuBar();       
         setJMenuBar(menu.menubar);

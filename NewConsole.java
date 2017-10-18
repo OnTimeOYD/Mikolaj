@@ -74,6 +74,13 @@ public class NewConsole extends JFrame implements ActionListener{
         add(buttonLine);
         
         setSize(300,400);
+        ////////////////////////////////////////////////////////////////////////
+        Toolkit tk = Toolkit.getDefaultToolkit();
+        Dimension screenSize = tk.getScreenSize();
+        float screenHeight = screenSize.height;
+        float screenWidth = screenSize.width;
+        setLocation((int)(screenWidth / 2.2), (int)(screenHeight / 3.5));
+        ////////////////////////////////////////////////////////////////////////
         setResizable(false);
         setVisible(true);
         
