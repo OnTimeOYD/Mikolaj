@@ -6,35 +6,31 @@ import java.awt.event.*;
 
 public class MenuBar extends JPanel implements ActionListener{
      JMenuBar menubar = new JMenuBar();
-     JMenuItem neew,load,save,share,delete,style,options,instruction,license;
+     JMenuItem neew,edit,load,save,share,delete,style,options,instruction,license,
+             authors;
      ImageIcon newFile = new ImageIcon("new.gif");
-     ImageIcon openFile = new ImageIcon("open.gif");
-     ImageIcon saveFile = new ImageIcon("save.gif");
      ImageIcon shareFile = new ImageIcon("share.gif");
-     ImageIcon delFile = new ImageIcon("del.gif");
      
+     ImageIcon editFile = new ImageIcon("edit.gif");
+     
+             
     public MenuBar(){
        /////////////////////////////////////////////
        JMenu file = new JMenu("File");
        neew = new JMenuItem("New", newFile);
-       neew.setAccelerator(KeyStroke.getKeyStroke('N', Toolkit.getDefaultToolkit ().getMenuShortcutKeyMask()));
-
-       load = new JMenuItem("Load",openFile);
-       load.setAccelerator(KeyStroke.getKeyStroke('O', Toolkit.getDefaultToolkit ().getMenuShortcutKeyMask()));
-
-       save = new JMenuItem("Save",saveFile);
-       save.setAccelerator(KeyStroke.getKeyStroke('S', Toolkit.getDefaultToolkit ().getMenuShortcutKeyMask()));   
+       edit = new JMenuItem("Edit",editFile);
+       neew.setAccelerator(KeyStroke.getKeyStroke
+        ('N', Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));  
        share = new JMenuItem("Share",shareFile);
-       delete = new JMenuItem("Delete",delFile);
+      
        
        neew.addActionListener(this);
-       
+     
        file.add(neew);
-       file.add(load);
-       file.add(save);
+       file.add(edit);
        file.addSeparator();
        file.add(share);
-       file.add(delete);
+       
        
        /////////////////////////////////////////////
        JMenu tools = new JMenu("Tools");
@@ -48,27 +44,27 @@ public class MenuBar extends JPanel implements ActionListener{
        
        /////////////////////////////////////////////
        JMenu help = new JMenu("Help");
-       
+       authors = new JMenuItem("Authors");
        instruction = new JMenuItem("Instruction");
        license = new JMenuItem("License");
+       authors.addActionListener(this);
+       license.addActionListener(this);
+       instruction.addActionListener(this);
        
        help.add(instruction);
        help.addSeparator();
        help.add(license);
+       help.add(authors);
        
        /////////////////////////////////////////////
        JMenu sync = new JMenu("Sync");
-       
-       /////////////////////////////////////////////
-       JMenu authors = new JMenu("Authors");
        
        /////////////////////////////////////////////
        menubar.add(file);
        menubar.add(tools);
        menubar.add(help);
        menubar.add(sync);
-       menubar.add(authors);
-    }
+       }
     
     
     
@@ -77,9 +73,15 @@ public class MenuBar extends JPanel implements ActionListener{
         
         if(source == neew){
             NewConsole nc = new NewConsole();
-
+        }      
+        if(source == authors){
+            Authors au = new Authors();
         }
-            
-        
+        if(source == license){
+            new License();
+        }
+        if(source == instruction){
+            new Instruction();
+        }
     }
 }

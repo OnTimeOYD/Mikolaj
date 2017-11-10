@@ -8,17 +8,19 @@ public class NewConsole extends JFrame implements ActionListener{
     JLabel title, date, content;
     JButton exit, save;
     JTextField textTitle;
-    JComboBox dayDate,monthDate,yearDate;
+    JComboBox dayDate,monthDate,yearDate,hourDate,minuteDate;
     JTextArea textContent;
     Integer[] days = new Integer[31];
     Integer[] months = new Integer[12];
     Integer[] years = new Integer[100];
+    Integer[] hours = new Integer[24];
+    Integer[] minutes = new Integer[60];
     
     
     public NewConsole(){
         super("Add new event");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        setLayout(new GridLayout(5,1));
+        setLayout(new GridLayout(6,1));
         ////////////////////////////////////////////////////////////////////////
         JPanel logo = new JPanel();
         JLabel logoText = new JLabel("Tu będzie logo");
@@ -38,10 +40,18 @@ public class NewConsole extends JFrame implements ActionListener{
                 months[i-1] = i;
             }
             years[i-1] = 2016+i;
+            if(i<=24){
+                hours[i-1] = i-1;
+            }
+            if(i<=60){
+                minutes[i-1] = i-1;
+            }
         }
         dayDate = new JComboBox(days);
         monthDate = new JComboBox(months);
         yearDate = new JComboBox(years);
+        hourDate = new JComboBox(hours);
+        minuteDate = new JComboBox(minutes);
         
         JPanel dateLine = new JPanel();
         date = new JLabel("Date: ");
@@ -50,6 +60,12 @@ public class NewConsole extends JFrame implements ActionListener{
         dateLine.add(dayDate);
         dateLine.add(monthDate);
         dateLine.add(yearDate);
+        ////////////////////////////////////////////////////////////////////////
+        JPanel timeLine = new JPanel();
+        JLabel time = new JLabel("Time: ");
+        timeLine.add(time);
+        timeLine.add(hourDate);
+        timeLine.add(minuteDate);
         ////////////////////////////////////////////////////////////////////////
         JPanel contentLine = new JPanel();
         content = new JLabel("Content: ");
@@ -70,6 +86,7 @@ public class NewConsole extends JFrame implements ActionListener{
         add(logo);
         add(titleLine);
         add(dateLine);
+        add(timeLine);
         add(contentLine);
         add(buttonLine);
         
@@ -91,9 +108,33 @@ public class NewConsole extends JFrame implements ActionListener{
         Object source = event.getSource();
         
         if(source == save){
+//            File.SAVE("@@"+yearDate.getSelectedItem()+
+//                      "@@"+monthDate.getSelectedItem()+
+//                      "@@"+dayDate.getSelectedItem()+
+//                      "@@"+hourDate.getSelectedItem()+
+//                      "@@"+minuteDate.getSelectedItem()+
+//                      "@@"+textTitle.getText()+
+//                      "@@"+textContent.getText()+
+//                      "@@");
+            File.TABLE_WITH_FILE_DATA[File.TABLE_LENGTH()] = 
+                      "@@"+yearDate.getSelectedItem()+
+                      "@@"+monthDate.getSelectedItem()+
+                      "@@"+dayDate.getSelectedItem()+
+                      "@@"+hourDate.getSelectedItem()+
+                      "@@"+minuteDate.getSelectedItem()+
+                      "@@"+textTitle.getText()+
+                      "@@"+textContent.getText()+
+                      "@@";
+
             this.dispose();
+            File.SAVE_TAB();
+            MainApp.REPAINT(1);
+                        
         }
         if(source == exit){
+//            File.READ("calendar.txt");
+//            File.READ_LINE(0);
+            MainApp.REPAINT(1);
             this.dispose();
         }
     }
