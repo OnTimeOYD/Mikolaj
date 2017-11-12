@@ -16,11 +16,11 @@ public class Authors extends JFrame {
         name1 = new JLabel("Mikołaj Korbanek",JLabel.CENTER);
         name2 = new JLabel("Patryk Pogorzelczyk",JLabel.CENTER);
         email = new JLabel("OnTimeOYD@gmail.com",JLabel.CENTER);
-        page = new JLabel ("OnTimeOYD.tk",JLabel.CENTER);
+        //page = new JLabel ("OnTimeOYD.tk",JLabel.CENTER);
         name1.setFont(new Font("Arial",Font.PLAIN,20));
         name2.setFont(new Font("Arial",Font.PLAIN,20));
         email.setFont(new Font("Arial",Font.PLAIN,15));
-        page.setFont(new Font("Arial",Font.PLAIN,15));
+        //page.setFont(new Font("Arial",Font.PLAIN,15));
         
                 
         leftPanel = new JPanel(new GridLayout(1,2));
@@ -40,7 +40,7 @@ public class Authors extends JFrame {
         add(leftPanel);
         add(rightPanel);
         add(email);
-        add(page);
+        //add(page);
         
         setSize(400,200);
         setVisible(true);

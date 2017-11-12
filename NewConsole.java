@@ -108,14 +108,6 @@ public class NewConsole extends JFrame implements ActionListener{
         Object source = event.getSource();
         
         if(source == save){
-//            File.SAVE("@@"+yearDate.getSelectedItem()+
-//                      "@@"+monthDate.getSelectedItem()+
-//                      "@@"+dayDate.getSelectedItem()+
-//                      "@@"+hourDate.getSelectedItem()+
-//                      "@@"+minuteDate.getSelectedItem()+
-//                      "@@"+textTitle.getText()+
-//                      "@@"+textContent.getText()+
-//                      "@@");
             File.TABLE_WITH_FILE_DATA[File.TABLE_LENGTH()] = 
                       "@@"+yearDate.getSelectedItem()+
                       "@@"+monthDate.getSelectedItem()+
@@ -132,9 +124,7 @@ public class NewConsole extends JFrame implements ActionListener{
                         
         }
         if(source == exit){
-//            File.READ("calendar.txt");
-//            File.READ_LINE(0);
-            MainApp.REPAINT(1);
+            //MainApp.REPAINT(1);
             this.dispose();
         }
     }

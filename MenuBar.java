@@ -4,10 +4,11 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class MenuBar extends JPanel implements ActionListener{
+public class MenuBar extends JPanel implements ActionListener,MouseListener{
      JMenuBar menubar = new JMenuBar();
      JMenuItem neew,edit,load,save,share,delete,style,options,instruction,license,
              authors;
+     JMenu bug;
      ImageIcon newFile = new ImageIcon("new.gif");
      ImageIcon shareFile = new ImageIcon("share.gif");
      
@@ -60,10 +61,15 @@ public class MenuBar extends JPanel implements ActionListener{
        JMenu sync = new JMenu("Sync");
        
        /////////////////////////////////////////////
+       bug = new JMenu("Report a bug");
+       bug.addMouseListener(this);
+       
+       /////////////////////////////////////////////
        menubar.add(file);
        menubar.add(tools);
        menubar.add(help);
        menubar.add(sync);
+       menubar.add(bug);
        }
     
     
@@ -83,5 +89,22 @@ public class MenuBar extends JPanel implements ActionListener{
         if(source == instruction){
             new Instruction();
         }
+
     }
+    public void mouseClicked(MouseEvent event){
+        Object source = event.getSource();
+        
+        if(source == bug){
+            new BugReport();
+        }
+    }
+    public void mouseEntered(MouseEvent event){
+    }
+    public void mouseExited(MouseEvent event){
+    }
+    public void mousePressed(MouseEvent event){        
+    }
+    public void mouseReleased(MouseEvent event){       
+    }   
+   
 }

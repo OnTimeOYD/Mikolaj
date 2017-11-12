@@ -8,7 +8,7 @@ package OnTime;
 * Patryk Pogorzelczyk
 * 
 * Obecna wersja:
-* Ver. 0.0.0.02
+* Ver. 0.0.0.03
 */
 
 import javax.swing.*;
@@ -46,8 +46,9 @@ public class MainApp extends JFrame {
         }
         //CC.setMinimumSize(new Dimension(200,100));
         add(new List(), BorderLayout.EAST);
-        add(new Calendar(), BorderLayout.WEST);
         
+        add(new Calendar(), BorderLayout.WEST);
+       
         ////////////////////////////////////////////////////////////////////////
         setLocation((int)(screenWidth / 2.9), (int)(screenHeight / 3.8));
         ////////////////////////////////////////////////////////////////////////

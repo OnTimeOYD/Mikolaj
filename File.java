@@ -79,7 +79,6 @@ public class File{
     
     
     
-    
     public static void READ(String fileName){
         for(int i=0;i<TABLE_WITH_FILE_DATA.length;i++){
             TABLE_WITH_FILE_DATA[i] = "0";
@@ -262,12 +261,8 @@ public class File{
                 }//else if(YearFirst == YearSecond)
                 }//if(st_compare.hasMoreTokens())
                 }//if(st.hasMoreTokens())
-
-
             }
-        }
-        
-        
+        }       
     }
     
     
