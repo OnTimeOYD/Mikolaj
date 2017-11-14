@@ -19,7 +19,6 @@ public class Calendar extends JPanel implements ActionListener,MouseListener{
     JButton leftYear,rightYear,leftMonth,rightMonth;
     int monthNumb=0;
     JPanel days;
-    
     int lastIndex = 0;
     
     public Calendar(){      
