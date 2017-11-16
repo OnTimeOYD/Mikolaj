@@ -78,10 +78,13 @@ public class MenuBar extends JPanel implements ActionListener,MouseListener{
         Object source = event.getSource();
         
         if(source == neew){
-            NewConsole nc = new NewConsole();
+            NewFile.day = 0;
+            NewFile.month = 0;
+            NewFile.year = 0;
+            new NewFile();
         }      
         if(source == authors){
-            Authors au = new Authors();
+            new Authors();
         }
         if(source == license){
             new License();

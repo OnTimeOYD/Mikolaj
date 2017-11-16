@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class NewConsole extends JFrame implements ActionListener{
+public class NewFile extends JFrame implements ActionListener{
     JLabel title, date, content;
     JButton exit, save;
     JTextField textTitle;
@@ -15,12 +15,13 @@ public class NewConsole extends JFrame implements ActionListener{
     Integer[] years = new Integer[100];
     Integer[] hours = new Integer[24];
     Integer[] minutes = new Integer[60];
+    static int day=0,month=0,year=0;
     
-    
-    public NewConsole(){
+    public NewFile(){
         super("Add new event");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setLayout(new GridLayout(6,1));
+        
         ////////////////////////////////////////////////////////////////////////
         JPanel logo = new JPanel();
         JLabel logoText = new JLabel("Tu będzie logo");
@@ -48,8 +49,11 @@ public class NewConsole extends JFrame implements ActionListener{
             }
         }
         dayDate = new JComboBox(days);
+        dayDate.setSelectedIndex(day);
         monthDate = new JComboBox(months);
+        monthDate.setSelectedIndex(month);
         yearDate = new JComboBox(years);
+        yearDate.setSelectedIndex(year);
         hourDate = new JComboBox(hours);
         minuteDate = new JComboBox(minutes);
         
