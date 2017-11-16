@@ -3,11 +3,13 @@ package OnTime;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.*;
 
 public class Calendar extends JPanel implements ActionListener,MouseListener{
     JLabel monthName,yearNumb;
     JLabel[] dayName = new JLabel[7];
     JLabel[] dayNumb = new JLabel[42];
+    Date[] dates = new Date[100];
     JPanel holder = new JPanel();
     JPanel yearNumbPanel,monthNamePanel,days;
     JButton leftYear,rightYear,leftMonth,rightMonth;    
@@ -17,6 +19,7 @@ public class Calendar extends JPanel implements ActionListener,MouseListener{
                             " October "," November"," December",""};
     int numbOfDays = 31,lastIndex = 0,block = 0,monthNumb = 0,FirstIndex;
     static int YEAR=2017;
+    static Date TODAY = new Date();
   
     public Calendar(){      
         holder.setLayout(new BoxLayout(holder, BoxLayout.Y_AXIS));
@@ -68,10 +71,8 @@ public class Calendar extends JPanel implements ActionListener,MouseListener{
             dayNumb[i].setHorizontalAlignment(SwingConstants.CENTER);
             dayNumb[i].setVerticalAlignment(SwingConstants.CENTER);
         }
-        
+        getDates();
         writeCalendar(monthNumb+1,YEAR,YEAR);
-        
-        
         
         
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
@@ -101,7 +102,11 @@ public class Calendar extends JPanel implements ActionListener,MouseListener{
             for(int i=0; i<dayNumb.length;i++){
                dayNumb[i].setText("  ");
                dayNumb[i].addMouseListener(this);
-                days.add(dayNumb[i]);            
+                days.add(dayNumb[i]);  
+                dayNumb[i].setOpaque(true);
+                dayNumb[i].setBackground(null); 
+                dayNumb[i].setForeground(null);  
+                dayNumb[i].setName("No.");
             } 
 
             for(int i=0;i<numbOfDays+FirstIndex;i++){
@@ -110,10 +115,53 @@ public class Calendar extends JPanel implements ActionListener,MouseListener{
                 } else if(i<9+FirstIndex){
                     dayNumb[i].setText("0"+dayNum++);
                     dayNumb[i].addMouseListener(this);
+                    
+                    if(makeDatesColorfull(dayNum-1,Month,Year)){
+                        dayNumb[i].setOpaque(true);
+                        dayNumb[i].setBackground(new Color(184,0,0));
+                        dayNumb[i].setForeground(new Color(0xFF,0xFF,0xFF));
+                        dayNumb[i].setName("Colored");
+                        
+                    }else{
+                        dayNumb[i].setOpaque(true);
+                        dayNumb[i].setBackground(null); 
+                        dayNumb[i].setForeground(null);
+                        dayNumb[i].setName("No.");
+                    }
+                    
+                    if(dayNum-1 == TODAY.getDate() && Month == TODAY.getMonth()-1 && Year==TODAY.getYear()+1900){
+                        dayNumb[i].setOpaque(true);
+                        dayNumb[i].setBackground(new Color(165,172,182)); 
+                        dayNumb[i].setName("Today");
+                    }
+                    
                 } else {
+                    
                     dayNumb[i].setText(""+dayNum++);
                     dayNumb[i].addMouseListener(this);
+                    
+                    if(makeDatesColorfull(dayNum-1,Month,Year)){
+                        System.err.println("jestemTu");
+                        dayNumb[i].setOpaque(true);
+                        dayNumb[i].setBackground(new Color(184,0,0));
+                        dayNumb[i].setForeground(new Color(0xFF,0xFF,0xFF));
+                        dayNumb[i].setName("Colored");
+                    }else{
+                        dayNumb[i].setOpaque(true);
+                        dayNumb[i].setBackground(null); 
+                        dayNumb[i].setForeground(null);
+                        dayNumb[i].setName("No.");
+                    } 
+                    
+                    if(dayNum-1 == TODAY.getDate() && Month == TODAY.getMonth()-1 && Year==TODAY.getYear()+1900){
+                        dayNumb[i].setOpaque(true);
+                        dayNumb[i].setBackground(new Color(165,172,182)); 
+                        dayNumb[i].setName("Today");
+                    }
+                    
+                    
                 }  
+                
             }
         }else{
         
@@ -182,6 +230,41 @@ public class Calendar extends JPanel implements ActionListener,MouseListener{
         return ((Year % 4 == 0) && (Year % 100 != 0)) || (Year % 400 == 0);
     }
     
+    public void getDates(){
+        for(int i=0;i<File.TABLE_WITH_FILE_DATA.length && i < File.TABLE_LENGTH();i++){
+            dates[i] = new Date();
+            dates[i].setDate(File.GET_DAY(i));
+            dates[i].setMonth(File.GET_MONTH(i)-1);
+            dates[i].setYear(File.GET_YEAR(i)-1900);
+            dates[i].setHours(File.GET_HOUR(i));
+            dates[i].setMinutes(File.GET_MINUTE(i));
+            dates[i].setSeconds(0);           
+            //System.out.println(dates[i]);
+        }
+    }
+    public boolean makeDatesColorfull(int Day,int Month, int Year){
+            int length = File.TABLE_LENGTH();
+            Boolean status = false;
+            for (int i=0;i<length;i++){
+
+               int datesY = dates[i].getYear()+1900; 
+               int datesM = dates[i].getMonth()+1;
+               int datesD = dates[i].getDate();
+               
+
+
+               
+               if(Year == datesY && Month == datesM && Day == datesD){
+                   // System.out.println(datesY + " " + datesM + " "+datesD);
+                           status = true;
+               }               
+            }
+
+            return status;
+    }
+    
+    
+    
     public Insets getInsets(){
         return new Insets(30,30,30,30);
     }
@@ -194,37 +277,45 @@ public class Calendar extends JPanel implements ActionListener,MouseListener{
     public void mouseEntered(MouseEvent event){
         Object source = event.getSource();
         for (int i=0;i<dayNumb.length;i++){
-            if(source == dayNumb[i]){
-                if(!( dayNumb[i].getText().equals("  ") )){
+            if(source == dayNumb[i] && !(dayNumb[i].getText().equals("  "))){
                 dayNumb[i].setOpaque(true);
                 dayNumb[i].setBackground(new Color(255,128,000));
                 dayNumb[i].setForeground(new Color(0xFF,0xFF,0xFF));
                 dayNumb[i].setCursor(new Cursor(Cursor.HAND_CURSOR));
-                
-                }
-                
             }
         }
     }
     public void mouseExited(MouseEvent event){
         Object source = event.getSource();
-            for(JLabel dayNumbLabel : dayNumb){
-                dayNumbLabel.setBackground(null);
-                dayNumbLabel.setForeground(null);
+            for(int i=0;i<dayNumb.length;i++){
+                if(source == dayNumb[i]){    
+                    if(dayNumb[i].getName().equals("Colored")){
+                        dayNumb[i].setOpaque(true);
+                        dayNumb[i].setBackground(new Color(184,0,0));
+                        dayNumb[i].setForeground(new Color(0xFF,0xFF,0xFF));
+                    }else if(dayNumb[i].getName().equals("Today")){
+                    dayNumb[i].setOpaque(true);
+                    dayNumb[i].setBackground(new Color(165,172,182));  
+                    dayNumb[i].setForeground(null);
+                    }else{
+                    dayNumb[i].setBackground(null);
+                    dayNumb[i].setForeground(null);
+                    }
+
+                }
+                
             }
     }
     public void mousePressed(MouseEvent event){ 
         Object source = event.getSource();
         for(int i = 0; i < dayNumb.length;i++){
             if(source == dayNumb[i]){
-                if(i>=FirstIndex){
-                    if(block == 0 ){
+                if(i>=FirstIndex && block == 0){
                         NewFile.day = i - FirstIndex;
                         NewFile.month = monthNumb;
                         NewFile.year = YEAR-2017;
                         new NewFile();
-                        block++;
-                    }
+                        block++;     
                 }
             }
         }
@@ -255,6 +346,7 @@ public class Calendar extends JPanel implements ActionListener,MouseListener{
             leftMonth.setEnabled(true);
             monthNumb = 0;
             monthName.setText(EngMonthName[monthNumb]);  
+            getDates();
             writeCalendar(monthNumb+1,YEAR,YEAR-1);
         }
         
@@ -274,6 +366,7 @@ public class Calendar extends JPanel implements ActionListener,MouseListener{
                 }
                 monthName.setText(EngMonthName[monthNumb]);
             }
+            getDates();
             writeCalendar(monthNumb+1,YEAR,YEAR);
         }
         
@@ -301,6 +394,7 @@ public class Calendar extends JPanel implements ActionListener,MouseListener{
                 monthName.setText(EngMonthName[monthNumb]);
                 leftMonth.setEnabled(true);
             }
+            getDates();            
             writeCalendar(monthNumb+1,YEAR,YEAR);
         }
         
