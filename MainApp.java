@@ -30,6 +30,7 @@ public class MainApp extends JFrame {
     static Dimension SCREEN_SIZE = TK.getScreenSize();
     public float screenHeight = SCREEN_SIZE.height;
     public float screenWidth = SCREEN_SIZE.width;
+    static Image img = TK.createImage("LogoOnTime.png");
     
             
     public MainApp() {
@@ -66,6 +67,7 @@ public class MainApp extends JFrame {
     
     public static void main(String[] arguments){
         mp = new MainApp();
+        mp.setIconImage(img);
         mp.setMinimumSize(new Dimension(800, 500));
         
     }

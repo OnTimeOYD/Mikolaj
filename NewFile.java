@@ -1,5 +1,6 @@
 package OnTime;
 
+import static OnTime.MainApp.img;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -61,7 +62,7 @@ public class NewFile extends JFrame implements ActionListener{
         
         JPanel dateLine = new JPanel();
         date = new JLabel("Date: ");
-        
+
         dateLine.add(date);
         dateLine.add(dayDate);
         dateLine.add(monthDate);
@@ -106,6 +107,7 @@ public class NewFile extends JFrame implements ActionListener{
         ////////////////////////////////////////////////////////////////////////
         setResizable(false);
         setVisible(true);
+        setIconImage(MainApp.img);
         
     }
     

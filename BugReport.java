@@ -92,6 +92,7 @@ public class BugReport extends JFrame implements ActionListener{
         setLocation((int)(screenWidth / 2.9), (int)(screenHeight / 3.8));
         add(holder);
         setVisible(true);
+        setIconImage(MainApp.img);
         setSize(400,700);
         
     }

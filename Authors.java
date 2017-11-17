@@ -41,7 +41,7 @@ public class Authors extends JFrame {
         add(rightPanel);
         add(email);
         //add(page);
-        
+        setIconImage(MainApp.img);
         setSize(400,200);
         setVisible(true);
     }
