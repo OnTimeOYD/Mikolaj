@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class CenterContent extends JPanel implements ActionListener{
-    public int day=1, month=1, year=2017, hour=12, minute=12;
+    public static int DAY=1, MONTH=1, YEAR=2017, HOUR=12, MINUTE=2;
     public static int LINE_NUMBER=0;
     public String title, content = "Brak zawartości";
     static Integer[] DAYS = new Integer[31];
@@ -48,15 +48,15 @@ public class CenterContent extends JPanel implements ActionListener{
         }
        
         dayDate = new JComboBox(DAYS);
-        dayDate.setSelectedItem(day);
+        dayDate.setSelectedItem(DAY);
         monthDate = new JComboBox(MONTHS);
-        monthDate.setSelectedIndex(month-1);
+        monthDate.setSelectedIndex(MONTH-1);
         yearDate = new JComboBox(YEARS);  
-        yearDate.setSelectedIndex(year-2017);
+        yearDate.setSelectedIndex(YEAR-2017);
         hourDate = new JComboBox(HOURS);
-        hourDate.setSelectedIndex(hour);
+        hourDate.setSelectedIndex(HOUR);
         minuteDate = new JComboBox(MINUTES);
-        minuteDate.setSelectedItem(minute);
+        minuteDate.setSelectedItem(MINUTE);
         datePanel.add(dateLabel);
         datePanel.add(dayDate);
         datePanel.add(monthDate);
@@ -137,11 +137,11 @@ public class CenterContent extends JPanel implements ActionListener{
             LINE_NUMBER = lineNumber;
         }
         public void setDate(int line){
-            day = File.GET_DAY(line);
-            month = File.GET_MONTH(line);
-            year = File.GET_YEAR(line);
-            hour = File.GET_HOUR(line);
-            minute = File.GET_MINUTE(line);
+            DAY = File.GET_DAY(line);
+            MONTH = File.GET_MONTH(line);
+            YEAR = File.GET_YEAR(line);
+            HOUR = File.GET_HOUR(line);
+            MINUTE = File.GET_MINUTE(line);
             title = File.GET_TITLE(line);
             content = File.GET_CONTENT(line);
         }

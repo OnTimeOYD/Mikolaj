@@ -8,7 +8,7 @@ package OnTime;
 * Patryk Pogorzelczyk
 * 
 * Obecna wersja:
-* Ver. 0.0.0.03.8
+* Ver. 0.0.0.03.9
 */
 
 import javax.swing.*;

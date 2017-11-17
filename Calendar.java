@@ -74,7 +74,6 @@ public class Calendar extends JPanel implements ActionListener,MouseListener{
         getDates();
         writeCalendar(monthNumb+1,YEAR,YEAR);
         
-        
         setLayout(new BoxLayout(this, BoxLayout.PAGE_AXIS));
         holder.add(yearNumbPanel);
         holder.add(monthNamePanel);
@@ -133,6 +132,8 @@ public class Calendar extends JPanel implements ActionListener,MouseListener{
                         dayNumb[i].setOpaque(true);
                         dayNumb[i].setBackground(new Color(165,172,182)); 
                         dayNumb[i].setName("Today");
+                        
+                        
                     }
                     
                 } else {
@@ -141,7 +142,7 @@ public class Calendar extends JPanel implements ActionListener,MouseListener{
                     dayNumb[i].addMouseListener(this);
                     
                     if(makeDatesColorfull(dayNum-1,Month,Year)){
-                        System.err.println("jestemTu");
+                        
                         dayNumb[i].setOpaque(true);
                         dayNumb[i].setBackground(new Color(184,0,0));
                         dayNumb[i].setForeground(new Color(0xFF,0xFF,0xFF));
@@ -153,7 +154,7 @@ public class Calendar extends JPanel implements ActionListener,MouseListener{
                         dayNumb[i].setName("No.");
                     } 
                     
-                    if(dayNum-1 == TODAY.getDate() && Month == TODAY.getMonth()-1 && Year==TODAY.getYear()+1900){
+                    if(dayNum-1 == TODAY.getDate() && Month == TODAY.getMonth()+1 && Year==TODAY.getYear()+1900){
                         dayNumb[i].setOpaque(true);
                         dayNumb[i].setBackground(new Color(165,172,182)); 
                         dayNumb[i].setName("Today");
@@ -271,7 +272,29 @@ public class Calendar extends JPanel implements ActionListener,MouseListener{
     
     public void mouseClicked(MouseEvent event){
         Object source = event.getSource();
-        
+        for(int i=0;i<dayNumb.length;i++){
+            if(source == dayNumb[i] && dayNumb[i].getName().equals("Colored")){
+                for(int j = 0; j < dayNumb.length;j++){
+                    /*System.out.println(File.GET_DAY(j) + "    " + (i-FirstIndex));
+                    System.out.println(File.GET_MONTH(j) + "    "+ monthNumb);
+                    System.out.println(File.GET_YEAR(j) +"    "+ (YEAR));*/
+                    
+                        if(block == 0 && File.GET_DAY(j)-1 == i-FirstIndex && File.GET_MONTH(j)-1== monthNumb&&
+                                File.GET_YEAR(j) == YEAR){
+        //                    CenterContent.DAY = i - FirstIndex;
+        //                    CenterContent.MONTH = monthNumb;
+        //                    CenterContent.YEAR = YEAR - 2017;
+        //                    MainApp.CC.setVisible(true);
+        //                    MainApp.REPAINT(0);
+                            block++;
+                            System.out.println("DZIAŁA");
+                            MainApp.CC.setVisible(true);
+                            CenterContent.SET_LINE(j);
+                            MainApp.REPAINT(0);
+                    }   
+                }
+            }
+        }
         
     }
     public void mouseEntered(MouseEvent event){
@@ -310,7 +333,7 @@ public class Calendar extends JPanel implements ActionListener,MouseListener{
         Object source = event.getSource();
         for(int i = 0; i < dayNumb.length;i++){
             if(source == dayNumb[i]){
-                if(i>=FirstIndex && block == 0){
+                if(i>=FirstIndex && block == 0  && !(dayNumb[i].getName().equals("Colored"))){
                         NewFile.day = i - FirstIndex;
                         NewFile.month = monthNumb;
                         NewFile.year = YEAR-2017;
