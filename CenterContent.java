@@ -76,7 +76,7 @@ public class CenterContent extends JPanel implements ActionListener{
         ////////////////////////////////////////////////////////////////////////
         JPanel contentPanel = new JPanel(new GridLayout());
 
-        textContent = new JTextArea(content,20,20);
+        textContent = new JTextArea(content,15,20);
         JScrollPane scroll = new JScrollPane(textContent);
         textContent.setFont(new Font("Arial",Font.PLAIN,15));
         textContent.setLineWrap(true);

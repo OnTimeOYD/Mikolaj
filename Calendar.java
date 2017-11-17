@@ -3,7 +3,7 @@ package OnTime;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.*;
+import java.util.Date;
 
 public class Calendar extends JPanel implements ActionListener,MouseListener{
     JLabel monthName,yearNumb;
@@ -274,24 +274,14 @@ public class Calendar extends JPanel implements ActionListener,MouseListener{
         Object source = event.getSource();
         for(int i=0;i<dayNumb.length;i++){
             if(source == dayNumb[i] && dayNumb[i].getName().equals("Colored")){
-                for(int j = 0; j < dayNumb.length;j++){
-                    /*System.out.println(File.GET_DAY(j) + "    " + (i-FirstIndex));
-                    System.out.println(File.GET_MONTH(j) + "    "+ monthNumb);
-                    System.out.println(File.GET_YEAR(j) +"    "+ (YEAR));*/
-                    
+                for(int j = 0; j < dayNumb.length;j++){  
                         if(block == 0 && File.GET_DAY(j)-1 == i-FirstIndex && File.GET_MONTH(j)-1== monthNumb&&
                                 File.GET_YEAR(j) == YEAR){
-        //                    CenterContent.DAY = i - FirstIndex;
-        //                    CenterContent.MONTH = monthNumb;
-        //                    CenterContent.YEAR = YEAR - 2017;
-        //                    MainApp.CC.setVisible(true);
-        //                    MainApp.REPAINT(0);
                             block++;
-                            System.out.println("DZIAŁA");
                             MainApp.CC.setVisible(true);
                             CenterContent.SET_LINE(j);
                             MainApp.REPAINT(0);
-                    }   
+                        }   
                 }
             }
         }

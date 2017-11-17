@@ -11,9 +11,11 @@ package OnTime;
 * Ver. 0.0.0.03.9
 */
 
-import javax.swing.*;
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.UIManager;
+import javax.swing.SwingUtilities;
 import java.awt.*;
-import java.awt.Color.*;
 
 public class MainApp extends JFrame {
     static MainApp mp;

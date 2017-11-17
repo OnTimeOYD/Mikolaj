@@ -16,6 +16,7 @@ public class NewFile extends JFrame implements ActionListener{
     Integer[] hours = new Integer[24];
     Integer[] minutes = new Integer[60];
     static int day=0,month=0,year=0;
+   // ImageIcon logoIMG = new ImageIcon("LogoOnTime.png");
     
     public NewFile(){
         super("Add new event");
@@ -24,7 +25,8 @@ public class NewFile extends JFrame implements ActionListener{
         
         ////////////////////////////////////////////////////////////////////////
         JPanel logo = new JPanel();
-        JLabel logoText = new JLabel("Tu będzie logo");
+        JLabel logoText = new JLabel();
+        //logoText.setMinimumSize(new Dimension(20,));
         logo.add(logoText);
         ////////////////////////////////////////////////////////////////////////
         JPanel titleLine = new JPanel();
