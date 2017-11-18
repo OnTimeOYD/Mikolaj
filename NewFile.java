@@ -1,6 +1,5 @@
 package OnTime;
 
-import static OnTime.MainApp.img;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -17,7 +16,6 @@ public class NewFile extends JFrame implements ActionListener{
     Integer[] hours = new Integer[24];
     Integer[] minutes = new Integer[60];
     static int day=0,month=0,year=0;
-   // ImageIcon logoIMG = new ImageIcon("LogoOnTime.png");
     
     public NewFile(){
         super("Add new event");
@@ -26,8 +24,7 @@ public class NewFile extends JFrame implements ActionListener{
         
         ////////////////////////////////////////////////////////////////////////
         JPanel logo = new JPanel();
-        JLabel logoText = new JLabel();
-        //logoText.setMinimumSize(new Dimension(20,));
+        JLabel logoText = new JLabel("Tu będzie logo");
         logo.add(logoText);
         ////////////////////////////////////////////////////////////////////////
         JPanel titleLine = new JPanel();
@@ -62,7 +59,7 @@ public class NewFile extends JFrame implements ActionListener{
         
         JPanel dateLine = new JPanel();
         date = new JLabel("Date: ");
-
+        
         dateLine.add(date);
         dateLine.add(dayDate);
         dateLine.add(monthDate);
@@ -107,7 +104,6 @@ public class NewFile extends JFrame implements ActionListener{
         ////////////////////////////////////////////////////////////////////////
         setResizable(false);
         setVisible(true);
-        setIconImage(MainApp.img);
         
     }
     

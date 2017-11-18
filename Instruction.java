@@ -33,7 +33,7 @@ public class Instruction extends JFrame implements ActionListener {
         float screenHeight = screenSize.height;
         float screenWidth = screenSize.width;
         setLocation((int)(screenWidth / 2.9), (int)(screenHeight / 3.8));
-        setIconImage(MainApp.img);
+        
         setSize(800,700);
         setVisible(true);
     }

@@ -8,7 +8,7 @@ package OnTime;
 * Patryk Pogorzelczyk
 * 
 * Obecna wersja:
-* Ver. 0.0.0.03.9
+* Ver. 0.0.0.03.9.1
 */
 
 import javax.swing.JFrame;
@@ -30,7 +30,6 @@ public class MainApp extends JFrame {
     static Dimension SCREEN_SIZE = TK.getScreenSize();
     public float screenHeight = SCREEN_SIZE.height;
     public float screenWidth = SCREEN_SIZE.width;
-    static Image img = TK.createImage("LogoOnTime.png");
     
             
     public MainApp() {
@@ -67,9 +66,8 @@ public class MainApp extends JFrame {
     
     public static void main(String[] arguments){
         mp = new MainApp();
-        mp.setIconImage(img);
         mp.setMinimumSize(new Dimension(800, 500));
-        
+        new Editor();
     }
     
 

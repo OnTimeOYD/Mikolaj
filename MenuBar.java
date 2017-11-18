@@ -20,6 +20,8 @@ public class MenuBar extends JPanel implements ActionListener,MouseListener{
        JMenu file = new JMenu("File");
        neew = new JMenuItem("New", newFile);
        edit = new JMenuItem("Edit",editFile);
+       edit.setAccelerator(KeyStroke.getKeyStroke
+        ('E', Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));
        neew.setAccelerator(KeyStroke.getKeyStroke
         ('N', Toolkit.getDefaultToolkit().getMenuShortcutKeyMask()));  
        share = new JMenuItem("Share",shareFile);
@@ -82,7 +84,10 @@ public class MenuBar extends JPanel implements ActionListener,MouseListener{
             NewFile.month = 0;
             NewFile.year = 0;
             new NewFile();
-        }      
+        }
+        if(source == edit){
+            new Editor();
+        }
         if(source == authors){
             new Authors();
         }
